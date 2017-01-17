@@ -1,11 +1,11 @@
-import axios from 'axios'
+import api from '../../../api/resource.js'
 import * as test from './exchange.types.js'
 
-const url = 'http://49.51.10.135/exchange'
 const actions = {
-	getExchange ({commit}) {
-		axios.get(url).then(res => {
+	getExchange ({commit}, bank) {
+		api.getInfoByBank(bank).then(res => {
 			commit(test.GET_EXCHANGE, {
+				bank: bank,
 				exchanges: res.data
 			})
 		})

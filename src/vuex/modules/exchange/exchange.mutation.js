@@ -1,9 +1,10 @@
 import {
 	GET_EXCHANGE
 } from './exchange.types.js'
+import localStorage from '../../../utils/localStorageService'
 
 const state = {
-	exchanges: []
+	exchanges: {}
 }
 
 const getters = {
@@ -12,7 +13,12 @@ const getters = {
 
 const mutations = {
 	[GET_EXCHANGE] (state, action) {
-		state.exchanges = action.exchanges.items
+		let _bank = action.bank.toUpperCase()
+		state.exchanges = Object.assign({}, state.exchanges, {[_bank]: {
+			name: _bank,
+			exchanges: action.exchanges.items
+		}})
+		localStorage.set('prev', state.exchanges)
 	}
 }
 

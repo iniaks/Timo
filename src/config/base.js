@@ -1,1 +1,1 @@
-export const BASE_URL = 'vue-template'
+export const BASE_URL = ''

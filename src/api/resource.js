@@ -1,17 +1,19 @@
-import Vue from 'vue'
-import VueResource from 'vue-resource'
+import axios from 'axios'
 
-Vue.use(VueResource)
-
-Vue.http.options.crossOrigin = true
-Vue.http.options.xhr = {withCredentials: false}
-// interceptors
-Vue.http.interceptors.push((response, next) => {
-	next((response) => {
-		try {
-			response.body = JSON.parse(response.body)
-		} catch (e) {
-			response.body = response.body
-		}
-	})
+const resource = axios.create({
+	baseURL: 'http://49.51.10.135/',
+	withCredentials: false,
+	headers: {
+		'Access-Control-Allow-Headers': '*'
+	}
 })
+
+export default {
+	getInfoByBank: (bank) => {
+		return resource.get('exchange', {
+			params: {
+				bank: bank
+			}
+		})
+	}
+}
