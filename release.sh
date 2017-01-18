@@ -4,6 +4,8 @@ sudo git commit -m 'cleanDist'
 echo '-=[提交清空完成]=-'
 sudo npm run build
 echo '-=[打包完成]=-'
+sudo git pull
+echo '-=[获取CNAME配置]=-'
 sudo git add *
 echo '-=[添加文件完成]=-'
 sudo git add docs -f
