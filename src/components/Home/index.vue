@@ -1,13 +1,12 @@
 <template>
-	<div style="overflow:hidden">
-		<div v-for='(bank, name) in list' class='bank'>
+	<div class='row' style="overflow:hidden">
+		<div v-for='(bank, name) in list' class='col-md-4 bank'>
 			<h5>
 				{{bank_names[bank.name]}}
 			</h5>
 			<div v-for='(exchange, index) in bank.exchanges' v-show='exchange.name == "USD"' class='exchange-container'>
 				<div class='exchange-item'>
-					<p style="color: #39ceb8;">现汇买入</p>
-					<h3>
+					<h3 style="display: inline-block">
 						{{exchange.buying_rate}}
 						<span v-if='prev != null'>
 							<span v-if='exchange.buying_rate - prev[name].exchanges[index].buying_rate < 0' style='color: #39ceb8;font-size: 12px'>↓</span>
@@ -16,12 +15,9 @@
 						</span>
 
 						<span v-if='prev == null' style='opacity: 0.5;font-size: 12px'>-</span>
-						
 					</h3>
-				</div>
-				<div class='exchange-item'>
-					<p style="color: #ec6941;">现汇卖出</p>
-					<h3>
+					/
+					<h3 style="display: inline-block">
 						{{exchange.selling_rate}}
 						<span v-if='prev != null'>
 							<span v-if='exchange.selling_rate - prev[name].exchanges[index].selling_rate < 0' style='color: #39ceb8;font-size: 12px'>↓</span>
@@ -69,6 +65,9 @@
 				// console.log(this.prev['BCM'])
 				for (let prop in this.bank_names) {
 					this.getNewestExchange(prop)
+					setTimeout(() => {
+						console.info('sleep')
+					}, 1000)
 				}
 			}
 		}

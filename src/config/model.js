@@ -1,7 +1,7 @@
 export const BANK_NAME_MAP = {
+	ICBC: '工商银行',
 	BOC: '中国银行',
 	ABC: '农业银行',
-	ICBC: '工商银行',
 	CCB: '建设银行',
 	BCM: '交通银行',
 	CMB: '招商银行'

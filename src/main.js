@@ -7,6 +7,7 @@ import App from './components/App'
 // import filters from './utils/filter.js'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 // style
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './style/core.less'
 // config
 // import {BASE_URL} from './config/base.js'
