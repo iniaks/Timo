@@ -83,9 +83,7 @@
 		font-size: 12px;
 	}
 	.bank {
-		float: left;
 		overflow: hidden;
-		width: calc(100% / 3);
 		text-align: center;
 	}
 	.exchange-item p {
