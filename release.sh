@@ -1,3 +1,4 @@
+sudo git pull
 sudo git rm -r docs
 echo '-=[清空发布目录]=-'
 sudo git commit -m 'cleanDist'
