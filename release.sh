@@ -7,7 +7,7 @@ sudo npm run build
 echo '-=[打包完成]=-'
 sudo touch ./docs/CNAME
 sudo chmod -R 777 *
-sudo echo 'tomcodesign.com' > ./docs/CNAME
+sudo echo 'exchange.tomcodesign.com' > ./docs/CNAME
 echo '-=[写入CNAME配置]=-'
 sudo git add *
 echo '-=[添加文件完成]=-'
