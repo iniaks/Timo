@@ -1,33 +1,33 @@
 <template>
 	<div class='row' style="overflow:hidden">
-		<div v-for='(bank, name) in list' class='col-md-4 bank'>
+		<div v-for='(price, name) in list' class='col-md-4 bank'>
 			<h5>
-				{{bank_names[bank.name]}}
+				{{bank_names[name]}}
 			</h5>
-			<div v-for='(exchange, index) in bank.exchanges' v-show='exchange.name == "USD"' class='exchange-container'>
+			<div class='exchange-container'>
 				<div class='exchange-item'>
 					<h3 style="display: inline-block">
-						{{exchange.buying_rate}}
-						<span v-if='prev != null'>
+						{{price.buying_rate}}
+						<!-- <span v-if='prev != null'>
 							<span v-if='exchange.buying_rate - prev[name].exchanges[index].buying_rate < 0' style='color: #39ceb8;font-size: 12px'>↓</span>
 							<span v-if='exchange.buying_rate - prev[name].exchanges[index].buying_rate > 0' style='color: #ec6941;font-size: 12px'>↑</span>
 							<span v-if='exchange.buying_rate - prev[name].exchanges[index].buying_rate == 0' style='opacity: 0.5;font-size: 12px'>-</span>
-						</span>
+						</span> -->
 
-						<span v-if='prev == null' style='opacity: 0.5;font-size: 12px'>-</span>
+						<!-- <span v-if='prev == null' style='opacity: 0.5;font-size: 12px'>-</span> -->
 					</h3>
 					/
 					<h3 style="display: inline-block">
-						{{exchange.selling_rate}}
-						<span v-if='prev != null'>
+						{{price.selling_rate}}
+						<!-- <span v-if='prev != null'>
 							<span v-if='exchange.selling_rate - prev[name].exchanges[index].selling_rate < 0' style='color: #39ceb8;font-size: 12px'>↓</span>
 							<span v-if='exchange.selling_rate - prev[name].exchanges[index].selling_rate == 0' style='opacity: 0.5;font-size: 12px'>-</span>
 							<span v-if='exchange.selling_rate - prev[name].exchanges[index].selling_rate > 0' style='color: #ec6941;font-size: 12px'>↑</span>
 						</span>
-						<span v-if='prev == null' style='opacity: 0.5;font-size: 12px'>-</span>
+						<span v-if='prev == null' style='opacity: 0.5;font-size: 12px'>-</span> -->
 					</h3>
 				</div>
-				<p class='exchange-time'>{{bank.exchanges[0].time}}</p>
+				<p class='exchange-time'>{{price.time}}</p>
 				<br>
 			</div>
 			<hr>
@@ -63,12 +63,7 @@
 			refresh: function () {
 				this.prev = localStorage.get('prev')
 				// console.log(this.prev['BCM'])
-				for (let prop in this.bank_names) {
-					this.getNewestExchange(prop)
-					setTimeout(() => {
-						console.info('sleep')
-					}, 1000)
-				}
+				this.getNewestExchange()
 			}
 		}
 	}

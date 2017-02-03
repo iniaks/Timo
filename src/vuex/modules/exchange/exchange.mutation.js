@@ -13,11 +13,7 @@ const getters = {
 
 const mutations = {
 	[GET_EXCHANGE] (state, action) {
-		let _bank = action.bank.toUpperCase()
-		state.exchanges = Object.assign({}, state.exchanges, {[_bank]: {
-			name: _bank,
-			exchanges: action.exchanges.items
-		}})
+		state.exchanges = action.exchanges.result
 		localStorage.set('prev', state.exchanges)
 	}
 }
