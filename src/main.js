@@ -8,6 +8,7 @@ import App from './components/App'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 // style
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-material-design/less/bootstrap-material-design.less'
 import './style/core.less'
 // config
 // import {BASE_URL} from './config/base.js'

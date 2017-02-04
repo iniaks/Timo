@@ -1,36 +1,27 @@
 <template>
 	<div class='row' style="overflow:hidden">
-		<div v-for='(price, name) in list' class='col-md-4 bank'>
-			<h5>
-				{{bank_names[name]}}
-			</h5>
-			<div class='exchange-container'>
-				<div class='exchange-item'>
-					<h3 style="display: inline-block">
-						{{price.buying_rate}}
-						<!-- <span v-if='prev != null'>
-							<span v-if='exchange.buying_rate - prev[name].exchanges[index].buying_rate < 0' style='color: #39ceb8;font-size: 12px'>↓</span>
-							<span v-if='exchange.buying_rate - prev[name].exchanges[index].buying_rate > 0' style='color: #ec6941;font-size: 12px'>↑</span>
-							<span v-if='exchange.buying_rate - prev[name].exchanges[index].buying_rate == 0' style='opacity: 0.5;font-size: 12px'>-</span>
-						</span> -->
-
-						<!-- <span v-if='prev == null' style='opacity: 0.5;font-size: 12px'>-</span> -->
-					</h3>
-					/
-					<h3 style="display: inline-block">
-						{{price.selling_rate}}
-						<!-- <span v-if='prev != null'>
-							<span v-if='exchange.selling_rate - prev[name].exchanges[index].selling_rate < 0' style='color: #39ceb8;font-size: 12px'>↓</span>
-							<span v-if='exchange.selling_rate - prev[name].exchanges[index].selling_rate == 0' style='opacity: 0.5;font-size: 12px'>-</span>
-							<span v-if='exchange.selling_rate - prev[name].exchanges[index].selling_rate > 0' style='color: #ec6941;font-size: 12px'>↑</span>
-						</span>
-						<span v-if='prev == null' style='opacity: 0.5;font-size: 12px'>-</span> -->
-					</h3>
+		<div v-for='(price, name) in list' class='col-md-4'>
+			<div class='panel panel-default'>
+				<div class="panel-heading">
+					{{bank_names[name]}}
+					<span class="label label-warning" v-if='price.best_buying' style="float: right">最佳结汇</span>
+					<span class="label label-success" v-if='price.best_selling' style="float: right">最佳购汇</span>
 				</div>
-				<p class='exchange-time'>{{price.time}}</p>
-				<br>
-			</div>
-			<hr>
+				<div class='panel-body'>
+					<div class='exchange-container'>
+						<div class='exchange-item'>
+							<h3 class='price-text' :style='{color:  price.buying_trend > 0 ? "#39ceb8" : price.buying_trend == 0 ? "#333" : "#ec6941" }'>
+								{{price.buying_rate}}
+							</h3>
+							/
+							<h3 class='price-text' :style='{color:  price.selling_trend > 0 ? "#39ceb8" : price.selling_trend == 0 ? "#333" : "#ec6941" }'>
+								{{price.selling_rate}}
+							</h3>
+						</div>
+						<p class='exchange-time'>{{price.time}}</p>
+					</div>
+				</div>
+			</div>	
 		</div>
 	</div>
 </template>
@@ -38,13 +29,11 @@
 <script>
 	import {mapState, mapActions} from 'vuex'
 	import {BANK_NAME_MAP} from '../../config/model.js'
-	import localStorage from '../../utils/localStorageService'
 
 	export default {
 		data () {
 			return {
-				bank_names: BANK_NAME_MAP,
-				prev: null
+				bank_names: BANK_NAME_MAP
 			}
 		},
 		mounted () {
@@ -61,7 +50,6 @@
 				getNewestExchange: 'getExchange'
 			}),
 			refresh: function () {
-				this.prev = localStorage.get('prev')
 				// console.log(this.prev['BCM'])
 				this.getNewestExchange()
 			}
@@ -83,5 +71,8 @@
 	}
 	.exchange-item p {
 		font-size: 12px;
+	}
+	.price-text {
+		display: inline-block;
 	}
 </style>

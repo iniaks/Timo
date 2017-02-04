@@ -1,7 +1,8 @@
 import axios from 'axios'
+import {BASE_URL} from '../config/base'
 
 const resource = axios.create({
-	baseURL: 'http://49.51.10.135/',
+	baseURL: BASE_URL,
 	withCredentials: false,
 	headers: {
 		'Access-Control-Allow-Headers': '*'
