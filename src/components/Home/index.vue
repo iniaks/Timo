@@ -3,7 +3,7 @@
 		<div class="form-group" style="overflow: hidden; margin-top: 0">
 			<div class='checkbox'>
 				<label :for='bank' v-for='(bank, index) in banks' class='bank-item'>
-					<input type="checkbox" :id='bank' name="bank" :value='bank' v-model='selected_banks' :disabled='index <= 3'>
+					<input type="checkbox" :id='bank' name="bank" :value='bank' v-model='selected_banks' :disabled='index <= 0'>
 					<span class="checkbox-material"><span class="check"></span></span>
 					{{bank_names[bank]}}
 				</label>
