@@ -10,10 +10,11 @@ const resource = axios.create({
 })
 
 export default {
-	getInfoByBank: (bank) => {
+	getInfoByBank: (banks) => {
 		return resource.get('exchange', {
 			params: {
-				bank: bank
+				currency: 'USD',
+				banks: banks
 			}
 		})
 	}

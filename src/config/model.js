@@ -1,10 +1,35 @@
+export const BANKS = [
+	'ICBC',
+	'ABC',
+	'BOC',
+	'CCB',
+	'BCM',
+	'CMB',
+	'HXB',
+	'CITIC',
+	'CEB',
+	'SPDB',
+	'CIB',
+	'PAB',
+	'BOS',
+	'CGB'
+]
+
 export const BANK_NAME_MAP = {
 	ICBC: '工商银行',
 	BOC: '中国银行',
 	ABC: '农业银行',
 	CCB: '建设银行',
 	BCM: '交通银行',
-	CMB: '招商银行'
+	CMB: '招商银行',
+	HXB: '华夏银行',
+	CITIC: '中信银行',
+	CEB: '光大银行',
+	SPDB: '浦发银行',
+	CIB: '兴业银行',
+	PAB: '平安银行',
+	BOS: '上海银行',
+	CGB: '广发银行'
 }
 
 export const CURRENCY_NAME_MAP = {

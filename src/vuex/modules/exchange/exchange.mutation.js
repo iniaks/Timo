@@ -4,11 +4,8 @@ import {
 import localStorage from '../../../utils/localStorageService'
 
 const state = {
-	exchanges: {}
-}
-
-const getters = {
-	exchanges: state => state.exchanges
+	exchanges: {},
+	selected_banks: localStorage.get('banks') || ['ICBC', 'ABC', 'BOC', 'CCB']
 }
 
 const mutations = {
@@ -20,6 +17,5 @@ const mutations = {
 
 export default {
 	state,
-	getters,
 	mutations
 }
