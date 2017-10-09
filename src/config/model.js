@@ -9,7 +9,7 @@ export const BANKS = [
 	'CITIC',
 	'CEB',
 	'SPDB',
-	'CIB',
+	// 'CIB',
 	'PAB',
 	'BOS',
 	'CGB'
@@ -26,7 +26,7 @@ export const BANK_NAME_MAP = {
 	CITIC: '中信银行',
 	CEB: '光大银行',
 	SPDB: '浦发银行',
-	CIB: '兴业银行',
+	// CIB: '兴业银行',
 	PAB: '平安银行',
 	BOS: '上海银行',
 	CGB: '广发银行'
